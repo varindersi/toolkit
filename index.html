@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Design Toolkit - Your All-in-One Color Design Solution</title>
+    <meta name="description" content="Free online color palette generator, hex to RGB converter, contrast checker, and more for designers">
+    <meta name="keywords" content="color palette, hex converter, contrast checker, color design tool">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Color Design Toolkit</h1>
+            <p class="tagline">Your All-in-One Color Design Solution</p>
+            <div class="theme-toggle">
+                <button id="themeToggle">Toggle Dark Mode</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul class="nav-tabs">
+                <li class="nav-item active" data-tool="palette">Palette Generator</li>
+                <li class="nav-item" data-tool="converter">Hex to RGB</li>
+                <li class="nav-item" data-tool="mixer">Color Mixer</li>
+                <li class="nav-item" data-tool="contrast">Contrast Checker</li>
+                <li class="nav-item" data-tool="shades">Shade Generator</li>
+                <li class="nav-item" data-tool="random">Random Picker</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Palette Generator Tool -->
+            <section id="palette" class="tool-section active">
+                <h2>Color Palette Generator</h2>
+                <div class="tool-container">
+                    <div class="palette-grid" id="paletteGrid">
+                        <!-- Palette colors will be generated here -->
+                    </div>
+                    <div class="controls">
+                        <button id="generatePalette">Generate Palette</button>
+                        <button id="exportPNG">Export as PNG</button>
+                        <button id="exportJSON">Export as JSON</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hex to RGB Converter -->
+            <section id="converter" class="tool-section">
+                <h2>Hex to RGB Converter</h2>
+                <div class="tool-container">
+                    <div class="input-group">
+                        <label for="hexInput">Hex Color:</label>
+                        <input type="text" id="hexInput" placeholder="#FF0000" maxlength="7">
+                    </div>
+                    <div class="input-group">
+                        <label for="rgbInput">RGB Color:</label>
+                        <input type="text" id="rgbInput" placeholder="rgb(255, 0, 0)" readonly>
+                    </div>
+                    <div class="color-preview" id="converterPreview"></div>
+                    <button id="copyConverter">Copy RGB Value</button>
+                </div>
+            </section>
+
+            <!-- Color Mixer -->
+            <section id="mixer" class="tool-section">
+                <h2>Color Mixer</h2>
+                <div class="tool-container">
+                    <div class="color-inputs">
+                        <div class="input-group">
+                            <label for="color1">Color 1:</label>
+                            <input type="color" id="color1" value="#FF0000">
+                            <input type="text" id="color1Hex" value="#FF0000">
+                        </div>
+                        <div class="input-group">
+                            <label for="color2">Color 2:</label>
+                            <input type="color" id="color2" value="#0000FF">
+                            <input type="text" id="color2Hex" value="#0000FF">
+                        </div>
+                    </div>
+                    <div class="mixed-color">
+                        <h3>Mixed Color</h3>
+                        <div class="color-preview" id="mixedPreview"></div>
+                        <div class="color-info" id="mixedInfo"></div>
+                        <button id="copyMixed">Copy Mixed Color</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contrast Checker -->
+            <section id="contrast" class="tool-section">
+                <h2>Contrast Checker</h2>
+                <div class="tool-container">
+                    <div class="color-inputs">
+                        <div class="input-group">
+                            <label for="foreground">Text Color:</label>
+                            <input type="color" id="foreground" value="#000000">
+                            <input type="text" id="foregroundHex" value="#000000">
+                        </div>
+                        <div class="input-group">
+                            <label for="background">Background Color:</label>
+                            <input type="color" id="background" value="#FFFFFF">
+                            <input type="text" id="backgroundHex" value="#FFFFFF">
+                        </div>
+                    </div>
+                    <div class="contrast-preview">
+                        <div class="preview-text" id="contrastPreview">
+                            Sample Text
+                        </div>
+                    </div>
+                    <div class="contrast-results">
+                        <div id="contrastRatio"></div>
+                        <div id="wcagCompliance"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shade Generator -->
+            <section id="shades" class="tool-section">
+                <h2>Shade Generator</h2>
+                <div class="tool-container">
+                    <div class="input-group">
+                        <label for="baseColor">Base Color:</label>
+                        <input type="color" id="baseColor" value="#4A90E2">
+                        <input type="text" id="baseColorHex" value="#4A90E2">
+                    </div>
+                    <div class="shades-grid" id="shadesGrid">
+                        <!-- Shades will be generated here -->
+                    </div>
+                    <button id="generateShades">Generate Shades</button>
+                </div>
+            </section>
+
+            <!-- Random Color Picker -->
+            <section id="random" class="tool-section">
+                <h2>Random Color Picker</h2>
+                <div class="tool-container">
+                    <div class="random-color">
+                        <div class="color-preview" id="randomPreview"></div>
+                        <div class="color-info" id="randomInfo"></div>
+                        <button id="generateRandom">Generate Random Color</button>
+                        <button id="copyRandom">Copy Color</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Advertisement Placeholders -->
+    <div class="ad-container">
+        <div class="ad-banner" aria-label="Advertisement">
+            <!-- Ad content will be placed here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
