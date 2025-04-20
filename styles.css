@@ -300,4 +300,458 @@ body {
     .tool-section {
         break-inside: avoid;
     }
+}
+
+/* Hex to RGB Converter Styles */
+.input-with-preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-with-preview .color-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: border-color var(--transition-speed);
+}
+
+.input-with-preview input:focus + .color-preview {
+    border-color: var(--primary-color);
+}
+
+.input-hint {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.result-group {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.input-with-copy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-with-copy input {
+    flex: 1;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+}
+
+.copy-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--border-color);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+/* Error state */
+input.error {
+    border-color: var(--error-color);
+}
+
+input.error:focus {
+    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .copy-btn:hover {
+    background-color: var(--card-background);
+}
+
+/* Color Actions and Dropdown */
+.color-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.dropdown-toggle:hover {
+    background-color: var(--border-color);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-speed);
+    z-index: 1000;
+}
+
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all var(--transition-speed);
+}
+
+.dropdown-item:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .dropdown-menu {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+    background-color: var(--card-background);
+}
+
+/* Color History */
+.color-history {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.color-history h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.history-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0 1rem;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background-color: var(--border-color);
+}
+
+.history-item .color-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.history-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.history-info .color-value {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-info .source-tool {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.use-color-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+}
+
+.use-color-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--border-color);
+}
+
+/* Scrollbar styling */
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .history-item:hover {
+    background-color: var(--card-background);
+}
+
+[data-theme="dark"] .use-color-btn:hover {
+    background-color: var(--card-background);
+}
+
+/* Color Blindness Simulator */
+.simulation-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.simulation-type {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--card-background);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    border: 2px solid transparent;
+}
+
+.simulation-type:hover {
+    background-color: var(--border-color);
+}
+
+.simulation-type.active {
+    border-color: var(--primary-color);
+    background-color: var(--card-background);
+}
+
+.simulation-type i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.mockup-container {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.mockup-preview {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mockup-header {
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px 8px 0 0;
+}
+
+.mockup-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mockup-logo {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.mockup-menu {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mockup-menu span {
+    width: 4px;
+    height: 4px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+}
+
+.mockup-content {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+}
+
+.mockup-card {
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.mockup-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.mockup-card p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.mockup-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.mockup-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.accessibility-results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: 12px;
+}
+
+.accessibility-results h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+}
+
+.result-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.result-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.result-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.result-status.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.result-status.warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+}
+
+.result-status.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+}
+
+/* Color Blindness Filters */
+[data-type="deuteranopia"] .mockup-preview {
+    filter: url('#deuteranopia');
+}
+
+[data-type="protanopia"] .mockup-preview {
+    filter: url('#protanopia');
+}
+
+[data-type="tritanopia"] .mockup-preview {
+    filter: url('#tritanopia');
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .mockup-content {
+    background-color: var(--card-background);
+}
+
+[data-theme="dark"] .mockup-card {
+    background-color: var(--background-color);
 } 
