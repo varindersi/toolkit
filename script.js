@@ -1,17 +1,41 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
+const themeIcon = themeToggle.querySelector('i');
+
+function updateThemeIcon(isDark) {
+    themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+}
 
 themeToggle.addEventListener('click', () => {
     const currentTheme = body.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme === 'dark');
 });
 
 // Initialize theme from localStorage
 const savedTheme = localStorage.getItem('theme') || 'light';
 body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme === 'dark');
+
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && 
+        !sidebar.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+    }
+});
 
 // Navigation
 const navItems = document.querySelectorAll('.nav-item');
@@ -27,8 +51,39 @@ navItems.forEach(item => {
         
         item.classList.add('active');
         document.getElementById(tool).classList.add('active');
+        
+        // Close sidebar on mobile after selection
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('active');
+        }
     });
 });
+
+// Tooltip System
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(text, element) {
+    const rect = element.getBoundingClientRect();
+    tooltip.textContent = text;
+    tooltip.style.left = `${rect.left + rect.width / 2}px`;
+    tooltip.style.top = `${rect.top - 40}px`;
+    tooltip.style.opacity = '1';
+    
+    setTimeout(() => {
+        tooltip.style.opacity = '0';
+    }, 2000);
+}
+
+// Enhanced Clipboard functionality
+async function copyToClipboard(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        showTooltip('Copied!', event.target);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+        showTooltip('Failed to copy', event.target);
+    }
+}
 
 // Color Palette Generator
 const paletteGrid = document.getElementById('paletteGrid');
@@ -61,7 +116,13 @@ function createColorCard(color) {
     info.className = 'color-info';
     info.textContent = hex;
     
+    const lockBtn = document.createElement('button');
+    lockBtn.className = 'lock-btn';
+    lockBtn.innerHTML = '<i class="fas fa-lock"></i>';
+    lockBtn.setAttribute('aria-label', 'Lock color');
+    
     card.appendChild(info);
+    card.appendChild(lockBtn);
     return card;
 }
 
@@ -100,6 +161,7 @@ exportPNGBtn.addEventListener('click', async () => {
     link.download = 'color-palette.png';
     link.href = canvas.toDataURL();
     link.click();
+    showTooltip('PNG exported!', exportPNGBtn);
 });
 
 // Export as JSON
@@ -120,33 +182,25 @@ exportJSONBtn.addEventListener('click', () => {
     link.click();
     
     URL.revokeObjectURL(url);
+    showTooltip('JSON exported!', exportJSONBtn);
 });
 
 // Initialize first palette
 generatePalette();
 
-// Clipboard functionality
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        // Show success message
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip';
-        tooltip.textContent = 'Copied!';
-        document.body.appendChild(tooltip);
-        
-        setTimeout(() => {
-            tooltip.remove();
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
-    });
-}
-
 // Add click handlers to color cards
 document.addEventListener('click', (e) => {
     if (e.target.closest('.color-card')) {
-        const hex = e.target.closest('.color-card').querySelector('.color-info').textContent;
+        const card = e.target.closest('.color-card');
+        const hex = card.querySelector('.color-info').textContent;
         copyToClipboard(hex);
+    }
+    
+    if (e.target.closest('.lock-btn')) {
+        const card = e.target.closest('.color-card');
+        card.classList.toggle('locked');
+        const icon = card.querySelector('.lock-btn i');
+        icon.className = card.classList.contains('locked') ? 'fas fa-lock' : 'fas fa-lock-open';
     }
 });
 
