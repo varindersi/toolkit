@@ -3,350 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Design Toolkit - Your All-in-One Color Design Solution</title>
-    <meta name="description" content="Free online color palette generator, hex to RGB converter, contrast checker, and more for designers">
-    <meta name="keywords" content="color palette, hex converter, contrast checker, color design tool">
+    <title>Color Design Toolkit - Free Online Color Tools for Designers & Developers</title>
+    <meta name="description" content="Free online color tools including palette generator, hex to RGB converter, contrast checker, color mixer, shade generator, and random color picker. Perfect for designers and developers.">
+    <meta name="keywords" content="color tools, color palette generator, hex to rgb converter, color contrast checker, color mixer, shade generator, random color picker, web design tools, color design, accessibility tools">
+    <meta name="author" content="Color Design Toolkit">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Color Design Toolkit - Free Online Color Tools">
+    <meta property="og:description" content="Comprehensive suite of free color tools for designers and developers. Generate palettes, convert colors, check contrast, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colordesigntoolkit.com">
+    <meta property="og:image" content="https://colordesigntoolkit.com/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Color Design Toolkit - Free Online Color Tools">
+    <meta name="twitter:description" content="Comprehensive suite of free color tools for designers and developers">
+    <meta name="twitter:image" content="https://colordesigntoolkit.com/images/twitter-image.jpg">
+    <link rel="canonical" href="https://colordesigntoolkit.com">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tools.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Color Design Toolkit",
+        "description": "Comprehensive suite of free color tools for designers and developers",
+        "url": "https://colordesigntoolkit.com",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Color Palette Generator",
+            "Hex to RGB Converter",
+            "Color Mixer",
+            "Contrast Checker",
+            "Shade Generator",
+            "Random Color Picker"
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="app-container">
-        <!-- Mobile Menu Toggle -->
-        <button class="menu-toggle" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="header-content">
                 <h1>Color Design Toolkit</h1>
-                <p class="tagline">Your All-in-One Color Design Solution</p>
+                <p class="subtitle">Your Ultimate Color Design Companion</p>
             </div>
-            <nav class="sidebar-nav">
-                <ul class="nav-tabs">
-                    <li class="nav-item active" data-tool="palette">
-                        <i class="fas fa-palette"></i>
-                        <span>Palette Generator</span>
-                    </li>
-                    <li class="nav-item" data-tool="converter">
-                        <i class="fas fa-exchange-alt"></i>
-                        <span>Hex to RGB</span>
-                    </li>
-                    <li class="nav-item" data-tool="mixer">
-                        <i class="fas fa-blender"></i>
-                        <span>Color Mixer</span>
-                    </li>
-                    <li class="nav-item" data-tool="contrast">
-                        <i class="fas fa-text-height"></i>
-                        <span>Contrast Checker</span>
-                    </li>
-                    <li class="nav-item" data-tool="shades">
-                        <i class="fas fa-layer-group"></i>
-                        <span>Shade Generator</span>
-                    </li>
-                    <li class="nav-item" data-tool="random">
-                        <i class="fas fa-random"></i>
-                        <span>Random Picker</span>
-                    </li>
-                </ul>
-            </nav>
-            <div class="color-history">
-                <h3>Recent Colors</h3>
-                <div id="colorHistory" class="history-list">
-                    <!-- History items will be added here -->
-                </div>
-            </div>
-            <div class="sidebar-footer">
-                <button id="themeToggle" class="theme-toggle">
-                    <i class="fas fa-moon"></i>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn-accent" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                     <span>Dark Mode</span>
                 </button>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                </div>
+                <a href="about.html" class="btn-accent" aria-label="Learn more about Color Design Toolkit">
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                    <span>Get Started</span>
+                </a>
             </div>
-        </aside>
+        </header>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- Palette Generator Tool -->
-            <section id="palette" class="tool-section active">
-                <div class="tool-header">
-                    <h2><i class="fas fa-palette"></i> Color Palette Generator</h2>
-                    <div class="tool-actions">
-                        <button id="generatePalette" class="btn-primary">
-                            <i class="fas fa-sync-alt"></i> Generate
-                        </button>
-                        <div class="export-options">
-                            <button id="exportPNG" class="btn-secondary">
-                                <i class="fas fa-download"></i> PNG
-                            </button>
-                            <button id="exportJSON" class="btn-secondary">
-                                <i class="fas fa-code"></i> JSON
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="tool-container">
-                    <div class="palette-grid" id="paletteGrid">
-                        <!-- Palette colors will be generated here -->
-                    </div>
-                </div>
-            </section>
+        <main class="tool-content" role="main">
+            <!-- Top Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <!-- AdSense or other ad code will go here -->
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
 
-            <!-- Hex to RGB Converter -->
-            <section id="converter" class="tool-section">
-                <div class="tool-header">
-                    <h2><i class="fas fa-exchange-alt"></i> Hex to RGB Converter</h2>
-                    <div class="tool-actions">
-                        <button id="modeToggle" class="btn-secondary">
-                            <i class="fas fa-sync-alt"></i> Switch Mode
-                        </button>
+            <div class="tools-grid">
+                <a href="tools/palette-generator.html" class="tool-card" data-tool="palette" aria-label="Palette Generator Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-palette" aria-hidden="true"></i>
                     </div>
-                </div>
-                <div class="tool-container">
-                    <div class="input-group">
-                        <label for="hexInput">Hex Color:</label>
-                        <div class="input-with-preview">
-                            <input type="text" id="hexInput" placeholder="#FF0000" maxlength="7" 
-                                   pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$">
-                            <div class="color-preview" id="converterPreview"></div>
-                        </div>
-                        <div class="input-hint">Format: #123 or #ABC123</div>
-                    </div>
-                    <div class="result-group">
-                        <div class="input-group">
-                            <label for="rgbInput">RGB Color:</label>
-                            <div class="input-with-copy">
-                                <input type="text" id="rgbInput" placeholder="rgb(255, 0, 0)" readonly>
-                                <button class="copy-btn" onclick="copyToClipboard(rgbInput.value)">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="hslInput">HSL Color:</label>
-                            <div class="input-with-copy">
-                                <input type="text" id="hslInput" placeholder="hsl(0, 100%, 50%)" readonly>
-                                <button class="copy-btn" onclick="copyToClipboard(hslInput.value)">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="color-actions">
-                            <div class="dropdown">
-                                <button class="btn-secondary dropdown-toggle">
-                                    <i class="fas fa-share-alt"></i> Use this color in...
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="#" data-tool="mixer" class="dropdown-item">
-                                        <i class="fas fa-blender"></i> Color Mixer
-                                    </a>
-                                    <a href="#" data-tool="contrast" class="dropdown-item">
-                                        <i class="fas fa-text-height"></i> Contrast Checker
-                                    </a>
-                                    <a href="#" data-tool="shades" class="dropdown-item">
-                                        <i class="fas fa-layer-group"></i> Shade Generator
-                                    </a>
-                                    <a href="#" data-tool="palette" class="dropdown-item">
-                                        <i class="fas fa-palette"></i> Palette Generator
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <h3>Palette Generator</h3>
+                    <p>Create beautiful color combinations</p>
+                </a>
 
-            <!-- Color Mixer -->
-            <section id="mixer" class="tool-section">
-                <h2>Color Mixer</h2>
-                <div class="tool-container">
-                    <div class="color-inputs">
-                        <div class="input-group">
-                            <label for="color1">Color 1:</label>
-                            <input type="color" id="color1" value="#FF0000">
-                            <input type="text" id="color1Hex" value="#FF0000">
-                        </div>
-                        <div class="input-group">
-                            <label for="color2">Color 2:</label>
-                            <input type="color" id="color2" value="#0000FF">
-                            <input type="text" id="color2Hex" value="#0000FF">
-                        </div>
+                <a href="tools/hex-to-rgb.html" class="tool-card" data-tool="converter" aria-label="Hex to RGB Converter Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
                     </div>
-                    <div class="mixed-color">
-                        <h3>Mixed Color</h3>
-                        <div class="color-preview" id="mixedPreview"></div>
-                        <div class="color-info" id="mixedInfo"></div>
-                        <button id="copyMixed">Copy Mixed Color</button>
-                    </div>
-                </div>
-            </section>
+                    <h3>Hex to RGB</h3>
+                    <p>Convert between color formats</p>
+                </a>
 
-            <!-- Contrast Checker -->
-            <section id="contrast" class="tool-section">
-                <h2>Contrast Checker</h2>
-                <div class="tool-container">
-                    <div class="color-inputs">
-                        <div class="input-group">
-                            <label for="foreground">Text Color:</label>
-                            <input type="color" id="foreground" value="#000000">
-                            <input type="text" id="foregroundHex" value="#000000">
-                        </div>
-                        <div class="input-group">
-                            <label for="background">Background Color:</label>
-                            <input type="color" id="background" value="#FFFFFF">
-                            <input type="text" id="backgroundHex" value="#FFFFFF">
-                        </div>
-                    </div>
-                    <div class="contrast-preview">
-                        <div class="preview-text" id="contrastPreview">
-                            Sample Text
-                        </div>
-                    </div>
-                    <div class="contrast-results">
-                        <div id="contrastRatio"></div>
-                        <div id="wcagCompliance"></div>
-                    </div>
+                <!-- Middle Ad Container -->
+                <div class="ad-container vertical-ad" aria-label="Advertisement">
+                    <!-- AdSense or other ad code will go here -->
+                    <div class="ad-placeholder">Advertisement</div>
                 </div>
-            </section>
 
-            <!-- Shade Generator -->
-            <section id="shades" class="tool-section">
-                <h2>Shade Generator</h2>
-                <div class="tool-container">
-                    <div class="input-group">
-                        <label for="baseColor">Base Color:</label>
-                        <input type="color" id="baseColor" value="#4A90E2">
-                        <input type="text" id="baseColorHex" value="#4A90E2">
+                <a href="tools/color-mixer.html" class="tool-card" data-tool="mixer" aria-label="Color Mixer Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-tint" aria-hidden="true"></i>
                     </div>
-                    <div class="shades-grid" id="shadesGrid">
-                        <!-- Shades will be generated here -->
+                    <h3>Color Mixer</h3>
+                    <p>Blend colors and find perfect combinations</p>
+                </a>
+
+                <a href="tools/contrast-checker.html" class="tool-card" data-tool="contrast" aria-label="Contrast Checker Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
                     </div>
-                    <button id="generateShades">Generate Shades</button>
+                    <h3>Contrast Checker</h3>
+                    <p>Ensure accessibility compliance</p>
+                </a>
+
+                <!-- Middle Ad Container -->
+                <div class="ad-container vertical-ad" aria-label="Advertisement">
+                    <!-- AdSense or other ad code will go here -->
+                    <div class="ad-placeholder">Advertisement</div>
                 </div>
-            </section>
 
-            <!-- Random Color Picker -->
-            <section id="random" class="tool-section">
-                <h2>Random Color Picker</h2>
-                <div class="tool-container">
-                    <div class="random-color">
-                        <div class="color-preview" id="randomPreview"></div>
-                        <div class="color-info" id="randomInfo"></div>
-                        <button id="generateRandom">Generate Random Color</button>
-                        <button id="copyRandom">Copy Color</button>
+                <a href="tools/shade-generator.html" class="tool-card" data-tool="shade" aria-label="Shade Generator Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-sliders-h" aria-hidden="true"></i>
                     </div>
-                </div>
-            </section>
+                    <h3>Shade Generator</h3>
+                    <p>Generate perfect color shades and tints</p>
+                </a>
 
-            <!-- Color Blindness Simulator -->
-            <section id="blindness" class="tool-section">
-                <div class="tool-header">
-                    <h2><i class="fas fa-eye"></i> Color Blindness Simulator</h2>
-                    <div class="tool-actions">
-                        <button id="addMockup" class="btn-secondary">
-                            <i class="fas fa-plus"></i> Add UI Mockup
-                        </button>
+                <a href="tools/random-picker.html" class="tool-card" data-tool="random" aria-label="Random Color Picker Tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-dice" aria-hidden="true"></i>
                     </div>
-                </div>
-                <div class="tool-container">
-                    <div class="input-group">
-                        <label for="baseColor">Base Color:</label>
-                        <div class="input-with-preview">
-                            <input type="color" id="baseColor" value="#4A90E2">
-                            <input type="text" id="baseColorHex" value="#4A90E2">
-                            <div class="color-preview" id="baseColorPreview"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="simulation-types">
-                        <div class="simulation-type active" data-type="normal">
-                            <i class="fas fa-eye"></i>
-                            <span>Normal Vision</span>
-                        </div>
-                        <div class="simulation-type" data-type="deuteranopia">
-                            <i class="fas fa-eye"></i>
-                            <span>Deuteranopia</span>
-                        </div>
-                        <div class="simulation-type" data-type="protanopia">
-                            <i class="fas fa-eye"></i>
-                            <span>Protanopia</span>
-                        </div>
-                        <div class="simulation-type" data-type="tritanopia">
-                            <i class="fas fa-eye"></i>
-                            <span>Tritanopia</span>
-                        </div>
-                    </div>
+                    <h3>Random Picker</h3>
+                    <p>Discover new color combinations</p>
+                </a>
+            </div>
 
-                    <div class="mockup-container">
-                        <div class="mockup-preview">
-                            <div class="mockup-header">
-                                <div class="mockup-nav">
-                                    <div class="mockup-logo">Logo</div>
-                                    <div class="mockup-menu">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mockup-content">
-                                <div class="mockup-card">
-                                    <h3>Card Title</h3>
-                                    <p>This is a sample card with some text content to demonstrate color contrast.</p>
-                                    <button class="mockup-button">Click Me</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accessibility-results">
-                        <h3>Accessibility Analysis</h3>
-                        <div class="result-grid">
-                            <div class="result-item">
-                                <span class="result-label">Text Contrast:</span>
-                                <span class="result-value" id="textContrast">4.5:1</span>
-                                <span class="result-status success">Pass</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Button Contrast:</span>
-                                <span class="result-value" id="buttonContrast">3:1</span>
-                                <span class="result-status warning">Warning</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">WCAG Compliance:</span>
-                                <span class="result-value" id="wcagCompliance">AA</span>
-                                <span class="result-status success">Pass</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- Bottom Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <!-- AdSense or other ad code will go here -->
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
         </main>
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#"><i class="fas fa-info-circle"></i> About</a>
-                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="faq.html">FAQ</a>
+                </nav>
+                <div class="social-links" aria-label="Social media links">
+                    <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="View our GitHub repository"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
                 <div class="footer-credits">
-                    <p>© 2024 Color Design Toolkit. All rights reserved.</p>
+                    <p>© 2025 Color Design Toolkit. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-    </div>
-
-    <!-- Advertisement Placeholders -->
-    <div class="ad-container">
-        <div class="ad-banner" aria-label="Advertisement">
-            <!-- Ad content will be placed here -->
-        </div>
     </div>
 
     <!-- Tooltip Container -->
