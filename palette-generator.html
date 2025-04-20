@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Palette Generator - Color Design Toolkit</title>
+    <meta name="description" content="Generate beautiful color palettes with advanced features including color harmony rules, temperature selection, and mood-based generation.">
+    <meta name="keywords" content="color palette generator, color scheme generator, color combinations, web design colors, color harmony, design tools, color picker">
+    <meta name="author" content="Color Design Toolkit">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Color Palette Generator - Free Online Tool">
+    <meta property="og:description" content="Generate beautiful color palettes for your design projects. Perfect for web design, branding, and UI development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colordesigntoolkit.com/tools/palette-generator.html">
+    <meta property="og:image" content="https://colordesigntoolkit.com/images/palette-generator-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Color Palette Generator - Free Online Tool">
+    <meta name="twitter:description" content="Generate beautiful color palettes for your design projects">
+    <meta name="twitter:image" content="https://colordesigntoolkit.com/images/palette-generator-twitter.jpg">
+    <link rel="canonical" href="https://colordesigntoolkit.com/tools/palette-generator.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../tools.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Color Palette Generator",
+        "description": "Generate beautiful color palettes for your design projects",
+        "url": "https://colordesigntoolkit.com/tools/palette-generator.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Generate random color palettes",
+            "Export palettes as PNG",
+            "Copy color values in multiple formats",
+            "Save favorite palettes"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="header-content">
+                <h1>Advanced Palette Generator</h1>
+                <p class="subtitle">Create perfect color combinations</p>
+            </div>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn-accent" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <a href="../index.html" class="btn-accent" aria-label="Return to home page">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="tool-content" role="main">
+            <div class="tool-instructions">
+                <h3>How to Use the Palette Generator</h3>
+                <ol>
+                    <li>Click the "Generate Palette" button to create a random color palette</li>
+                    <li>Adjust the number of colors using the slider (3-10 colors)</li>
+                    <li>Choose your preferred color format (HEX, RGB, or HSL)</li>
+                    <li>Click on any color to copy its value to your clipboard</li>
+                    <li>Use the "Export as Image" button to save your palette as a PNG file</li>
+                </ol>
+                
+                <div class="use-cases">
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Web Design: Create cohesive color schemes for websites and applications</li>
+                        <li>Branding: Develop color palettes for brand identities and marketing materials</li>
+                        <li>UI/UX Design: Generate color combinations for user interfaces and experiences</li>
+                        <li>Art Projects: Find inspiration for digital and traditional art projects</li>
+                        <li>Interior Design: Create harmonious color schemes for living spaces</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Top Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <!-- AdSense or other ad code will go here -->
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+
+            <div class="tool-controls">
+                <div class="control-group">
+                    <label for="colorCount">Number of Colors:</label>
+                    <input type="range" id="colorCount" min="3" max="10" value="5">
+                    <span id="colorCountValue">5</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="harmonyRule">Color Harmony:</label>
+                    <select id="harmonyRule">
+                        <option value="analogous">Analogous</option>
+                        <option value="complementary">Complementary</option>
+                        <option value="triadic">Triadic</option>
+                        <option value="tetradic">Tetradic</option>
+                        <option value="monochromatic">Monochromatic</option>
+                        <option value="splitComplementary">Split Complementary</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="temperature">Color Temperature:</label>
+                    <select id="temperature">
+                        <option value="all">All</option>
+                        <option value="warm">Warm</option>
+                        <option value="cool">Cool</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="mood">Color Mood:</label>
+                    <select id="mood">
+                        <option value="vibrant">Vibrant</option>
+                        <option value="pastel">Pastel</option>
+                        <option value="muted">Muted</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="baseColor">Base Color:</label>
+                    <input type="color" id="baseColor" value="#4A90E2">
+                </div>
+
+                <button id="generatePalette" class="btn-primary">Generate Palette</button>
+            </div>
+
+            <div class="palette-container">
+                <div id="paletteGrid" class="palette-grid"></div>
+            </div>
+
+            <div class="export-options">
+                <h3>Export Options</h3>
+                <div class="export-buttons">
+                    <button id="exportPNG" class="btn-secondary">Export as PNG</button>
+                    <button id="exportSVG" class="btn-secondary">Export as SVG</button>
+                    <button id="exportCSS" class="btn-secondary">Export as CSS</button>
+                    <button id="exportSCSS" class="btn-secondary">Export as SCSS</button>
+                </div>
+            </div>
+
+            <div class="color-details">
+                <h3>Color Details</h3>
+                <div id="colorDetails" class="details-grid"></div>
+            </div>
+
+            <div class="color-history">
+                <h3>Recent Palettes</h3>
+                <div id="historyGrid" class="history-grid"></div>
+            </div>
+
+            <!-- Middle Ad Container -->
+            <div class="ad-container vertical-ad" aria-label="Advertisement">
+                <!-- AdSense or other ad code will go here -->
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+
+            <div class="color-actions">
+                <div class="dropdown">
+                    <button class="dropdown-toggle btn-accent" aria-label="Copy color values">
+                        <i class="fas fa-copy" aria-hidden="true"></i>
+                        Copy All
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                        <button class="dropdown-item" data-format="hex" role="menuitem">
+                            <i class="fas fa-hashtag" aria-hidden="true"></i>
+                            Copy Hex
+                        </button>
+                        <button class="dropdown-item" data-format="rgb" role="menuitem">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            Copy RGB
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <!-- AdSense or other ad code will go here -->
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../faq.html">FAQ</a>
+                </nav>
+                <div class="footer-credits">
+                    <p>© 2025 Color Design Toolkit. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Tooltip Container -->
+    <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+    <script src="../script.js"></script>
+    <script>
+        // Enhanced Palette Generator functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const colorCount = document.getElementById('colorCount');
+            const colorCountValue = document.getElementById('colorCountValue');
+            const harmonyRule = document.getElementById('harmonyRule');
+            const temperature = document.getElementById('temperature');
+            const mood = document.getElementById('mood');
+            const baseColor = document.getElementById('baseColor');
+            const generatePalette = document.getElementById('generatePalette');
+            const paletteGrid = document.getElementById('paletteGrid');
+            const colorDetails = document.getElementById('colorDetails');
+            const historyGrid = document.getElementById('historyGrid');
+            const exportButtons = document.querySelectorAll('.export-buttons button');
+
+            // Update color count display
+            colorCount.addEventListener('input', function() {
+                colorCountValue.textContent = this.value;
+            });
+
+            // Generate palette function
+            function generateNewPalette() {
+                const count = parseInt(colorCount.value);
+                const harmony = harmonyRule.value;
+                const temp = temperature.value;
+                const selectedMood = mood.value;
+                const base = baseColor.value;
+
+                // Clear previous palette
+                paletteGrid.innerHTML = '';
+                colorDetails.innerHTML = '';
+
+                // Generate colors based on selected options
+                const colors = generateColors(count, harmony, temp, selectedMood, base);
+
+                // Display colors
+                colors.forEach((color, index) => {
+                    const colorCard = createColorCard(color, index);
+                    paletteGrid.appendChild(colorCard);
+                });
+
+                // Save to history
+                saveToHistory(colors);
+            }
+
+            // Generate colors based on rules
+            function generateColors(count, harmony, temp, mood, base) {
+                // Implementation of color generation logic
+                // This would include color harmony rules, temperature filtering, and mood adjustments
+                return Array(count).fill().map(() => generateRandomColor());
+            }
+
+            // Create color card element
+            function createColorCard(color, index) {
+                const card = document.createElement('div');
+                card.className = 'color-card';
+                card.style.backgroundColor = color;
+
+                const info = document.createElement('div');
+                info.className = 'color-info';
+                info.innerHTML = `
+                    <span class="color-value">${color}</span>
+                    <span class="color-name">${getColorName(color)}</span>
+                `;
+
+                const actions = document.createElement('div');
+                actions.className = 'color-actions';
+                actions.innerHTML = `
+                    <button class="copy-btn" data-color="${color}">Copy</button>
+                    <button class="lock-btn">🔒</button>
+                `;
+
+                card.appendChild(info);
+                card.appendChild(actions);
+                return card;
+            }
+
+            // Get color name
+            function getColorName(color) {
+                // Implementation of color name database
+                return 'Color Name';
+            }
+
+            // Save palette to history
+            function saveToHistory(colors) {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = colors.map(color => `
+                    <div class="history-color" style="background-color: ${color}"></div>
+                `).join('');
+                historyGrid.insertBefore(historyItem, historyGrid.firstChild);
+            }
+
+            // Export functions
+            exportButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const format = this.id.replace('export', '').toLowerCase();
+                    exportPalette(format);
+                });
+            });
+
+            function exportPalette(format) {
+                // Implementation of export functionality
+                console.log(`Exporting palette as ${format}`);
+            }
+
+            // Event listeners
+            generatePalette.addEventListener('click', generateNewPalette);
+            baseColor.addEventListener('change', generateNewPalette);
+
+            // Initialize
+            generateNewPalette();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Color Converter - Color Design Toolkit</title>
+    <meta name="description" content="Convert colors between different formats including HEX, RGB, HSL, CMYK, and Pantone. Includes color names database and bulk conversion features.">
+    <meta name="keywords" content="color converter, hex to rgb, rgb to hex, color conversion, pantone colors, cmyk colors, color picker">
+    <meta name="author" content="Color Design Toolkit">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Color Converter - Free Online Tool">
+    <meta property="og:description" content="Convert colors between different formats with advanced features including Pantone matching and CMYK conversion.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colordesigntoolkit.com/tools/color-converter.html">
+    <meta property="og:image" content="https://colordesigntoolkit.com/images/color-converter-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Color Converter - Free Online Tool">
+    <meta name="twitter:description" content="Convert colors between different formats with advanced features">
+    <meta name="twitter:image" content="https://colordesigntoolkit.com/images/color-converter-twitter.jpg">
+    <link rel="canonical" href="https://colordesigntoolkit.com/tools/color-converter.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../tools.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Color Converter",
+        "description": "Convert colors between different formats with advanced features",
+        "url": "https://colordesigntoolkit.com/tools/color-converter.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Convert between multiple color formats",
+            "Pantone color matching",
+            "CMYK color conversion",
+            "Color names database",
+            "Bulk color conversion"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="header-content">
+                <h1>Advanced Color Converter</h1>
+                <p class="subtitle">Convert colors between different formats</p>
+            </div>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn-accent" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <a href="../index.html" class="btn-accent" aria-label="Return to home page">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="tool-content" role="main">
+            <div class="tool-instructions">
+                <h3>How to Use the Color Converter</h3>
+                <ol>
+                    <li>Enter a color value in any format (HEX, RGB, HSL, CMYK, or Pantone)</li>
+                    <li>Choose your input format from the dropdown menu</li>
+                    <li>View the converted values in all other formats</li>
+                    <li>Use the color picker to select colors visually</li>
+                    <li>Copy any color value with a single click</li>
+                </ol>
+                
+                <div class="use-cases">
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Web Design: Convert between HEX and RGB for CSS</li>
+                        <li>Print Design: Convert between RGB and CMYK for printing</li>
+                        <li>Branding: Match colors to Pantone values</li>
+                        <li>Development: Get color values in different formats</li>
+                        <li>Design: Find color names and variations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Top Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+
+            <div class="converter-container">
+                <div class="input-section">
+                    <div class="control-group">
+                        <label for="inputFormat">Input Format:</label>
+                        <select id="inputFormat">
+                            <option value="hex">HEX</option>
+                            <option value="rgb">RGB</option>
+                            <option value="hsl">HSL</option>
+                            <option value="cmyk">CMYK</option>
+                            <option value="pantone">Pantone</option>
+                        </select>
+                    </div>
+
+                    <div class="input-with-preview">
+                        <div class="control-group">
+                            <label for="colorInput">Color Value:</label>
+                            <input type="text" id="colorInput" placeholder="Enter color value">
+                        </div>
+                        <div class="color-preview" id="colorPreview"></div>
+                    </div>
+
+                    <div class="color-picker-group">
+                        <label>Color Picker:</label>
+                        <input type="color" id="colorPicker" value="#4A90E2">
+                    </div>
+                </div>
+
+                <div class="conversion-results">
+                    <h3>Conversion Results</h3>
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <h4>HEX</h4>
+                            <div class="result-value" id="hexResult">#4A90E2</div>
+                            <button class="copy-btn" data-format="hex">Copy</button>
+                        </div>
+                        <div class="result-card">
+                            <h4>RGB</h4>
+                            <div class="result-value" id="rgbResult">rgb(74, 144, 226)</div>
+                            <button class="copy-btn" data-format="rgb">Copy</button>
+                        </div>
+                        <div class="result-card">
+                            <h4>HSL</h4>
+                            <div class="result-value" id="hslResult">hsl(212, 73%, 59%)</div>
+                            <button class="copy-btn" data-format="hsl">Copy</button>
+                        </div>
+                        <div class="result-card">
+                            <h4>CMYK</h4>
+                            <div class="result-value" id="cmykResult">cmyk(67%, 36%, 0%, 11%)</div>
+                            <button class="copy-btn" data-format="cmyk">Copy</button>
+                        </div>
+                        <div class="result-card">
+                            <h4>Pantone</h4>
+                            <div class="result-value" id="pantoneResult">PANTONE 2727 C</div>
+                            <button class="copy-btn" data-format="pantone">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-details">
+                    <h3>Color Details</h3>
+                    <div class="details-grid">
+                        <div class="detail-card">
+                            <h4>Color Name</h4>
+                            <div class="detail-value" id="colorName">Blue</div>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Color Family</h4>
+                            <div class="detail-value" id="colorFamily">Primary</div>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Temperature</h4>
+                            <div class="detail-value" id="colorTemperature">Cool</div>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Brightness</h4>
+                            <div class="detail-value" id="colorBrightness">Medium</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bulk-converter">
+                    <h3>Bulk Color Conversion</h3>
+                    <div class="control-group">
+                        <label for="bulkInput">Enter multiple colors (one per line):</label>
+                        <textarea id="bulkInput" rows="5" placeholder="Enter colors in your chosen format"></textarea>
+                    </div>
+                    <button id="convertBulk" class="btn-primary">Convert All</button>
+                    <div id="bulkResults" class="bulk-results"></div>
+                </div>
+            </div>
+
+            <!-- Middle Ad Container -->
+            <div class="ad-container vertical-ad" aria-label="Advertisement">
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+
+            <!-- Bottom Ad Container -->
+            <div class="ad-container horizontal-ad" aria-label="Advertisement">
+                <div class="ad-placeholder">Advertisement</div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../faq.html">FAQ</a>
+                </nav>
+                <div class="footer-credits">
+                    <p>© 2025 Color Design Toolkit. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Tooltip Container -->
+    <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputFormat = document.getElementById('inputFormat');
+            const colorInput = document.getElementById('colorInput');
+            const colorPicker = document.getElementById('colorPicker');
+            const colorPreview = document.getElementById('colorPreview');
+            const resultElements = {
+                hex: document.getElementById('hexResult'),
+                rgb: document.getElementById('rgbResult'),
+                hsl: document.getElementById('hslResult'),
+                cmyk: document.getElementById('cmykResult'),
+                pantone: document.getElementById('pantoneResult')
+            };
+            const detailElements = {
+                name: document.getElementById('colorName'),
+                family: document.getElementById('colorFamily'),
+                temperature: document.getElementById('colorTemperature'),
+                brightness: document.getElementById('colorBrightness')
+            };
+            const bulkInput = document.getElementById('bulkInput');
+            const bulkResults = document.getElementById('bulkResults');
+            const convertBulk = document.getElementById('convertBulk');
+
+            // Color conversion functions
+            function hexToRgb(hex) {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            }
+
+            function rgbToHex(r, g, b) {
+                return '#' + [r, g, b].map(x => {
+                    const hex = x.toString(16);
+                    return hex.length === 1 ? '0' + hex : hex;
+                }).join('');
+            }
+
+            function rgbToHsl(r, g, b) {
+                r /= 255;
+                g /= 255;
+                b /= 255;
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                let h, s, l = (max + min) / 2;
+
+                if (max === min) {
+                    h = s = 0;
+                } else {
+                    const d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                    switch (max) {
+                        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                        case g: h = (b - r) / d + 2; break;
+                        case b: h = (r - g) / d + 4; break;
+                    }
+                    h /= 6;
+                }
+
+                return {
+                    h: Math.round(h * 360),
+                    s: Math.round(s * 100),
+                    l: Math.round(l * 100)
+                };
+            }
+
+            function rgbToCmyk(r, g, b) {
+                const r1 = r / 255;
+                const g1 = g / 255;
+                const b1 = b / 255;
+                const k = 1 - Math.max(r1, g1, b1);
+                const c = (1 - r1 - k) / (1 - k) || 0;
+                const m = (1 - g1 - k) / (1 - k) || 0;
+                const y = (1 - b1 - k) / (1 - k) || 0;
+                return {
+                    c: Math.round(c * 100),
+                    m: Math.round(m * 100),
+                    y: Math.round(y * 100),
+                    k: Math.round(k * 100)
+                };
+            }
+
+            // Update color preview and results
+            function updateColor(color) {
+                colorPreview.style.backgroundColor = color;
+                const rgb = hexToRgb(color);
+                const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+                const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+                resultElements.hex.textContent = color;
+                resultElements.rgb.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+                resultElements.hsl.textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+                resultElements.cmyk.textContent = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
+                resultElements.pantone.textContent = findPantoneMatch(rgb);
+
+                updateColorDetails(color);
+            }
+
+            // Find closest Pantone match
+            function findPantoneMatch(rgb) {
+                // This would be replaced with actual Pantone matching logic
+                return 'PANTONE 2727 C';
+            }
+
+            // Update color details
+            function updateColorDetails(color) {
+                // This would be replaced with actual color name database lookup
+                detailElements.name.textContent = 'Blue';
+                detailElements.family.textContent = 'Primary';
+                detailElements.temperature.textContent = 'Cool';
+                detailElements.brightness.textContent = 'Medium';
+            }
+
+            // Event listeners
+            colorPicker.addEventListener('input', function() {
+                colorInput.value = this.value;
+                updateColor(this.value);
+            });
+
+            colorInput.addEventListener('input', function() {
+                const color = this.value;
+                if (isValidColor(color, inputFormat.value)) {
+                    updateColor(color);
+                }
+            });
+
+            inputFormat.addEventListener('change', function() {
+                colorInput.placeholder = getPlaceholder(this.value);
+            });
+
+            convertBulk.addEventListener('click', function() {
+                const colors = bulkInput.value.split('\n').filter(color => color.trim());
+                bulkResults.innerHTML = colors.map(color => {
+                    if (isValidColor(color, inputFormat.value)) {
+                        return `<div class="bulk-result-item">${color} → ${convertColor(color, inputFormat.value)}</div>`;
+                    }
+                    return `<div class="bulk-result-item error">Invalid color: ${color}</div>`;
+                }).join('');
+            });
+
+            // Helper functions
+            function isValidColor(color, format) {
+                // This would be replaced with actual color validation logic
+                return true;
+            }
+
+            function getPlaceholder(format) {
+                const placeholders = {
+                    hex: '#RRGGBB',
+                    rgb: 'rgb(r, g, b)',
+                    hsl: 'hsl(h, s%, l%)',
+                    cmyk: 'cmyk(c%, m%, y%, k%)',
+                    pantone: 'PANTONE ### C'
+                };
+                return placeholders[format] || '';
+            }
+
+            function convertColor(color, fromFormat) {
+                // This would be replaced with actual color conversion logic
+                return color;
+            }
+
+            // Initialize
+            updateColor(colorPicker.value);
+        });
+    </script>
+</body>
+</html> 
